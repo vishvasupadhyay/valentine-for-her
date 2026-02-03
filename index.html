@@ -145,10 +145,23 @@ setInterval(() => {
 }, 300);
 
 function moveBtn(btn) {
+  // Move button randomly
   btn.style.position = 'absolute';
   btn.style.left = Math.random() * 80 + 'vw';
   btn.style.top = Math.random() * 80 + 'vh';
+
+  // 🐭 Mouse runs to button
+  const mouse = document.querySelector(".mouse-animal");
+  const rect = btn.getBoundingClientRect();
+
+  // Stop walking animation
+  mouse.style.animation = "none";
+
+  // Move mouse near button
+  mouse.style.left = rect.left - 50 + "px";
+  mouse.style.bottom = (window.innerHeight - rect.top - 60) + "px";
 }
+
 
 function showLove() {
   document.getElementById('popup').style.display = 'block';
