@@ -17,6 +17,7 @@ body {
   text-align: center;
 }
 
+/* Floating hearts */
 .heart {
   position: fixed;
   bottom: -10px;
@@ -53,6 +54,7 @@ button {
 
 button:hover { transform: scale(1.05); }
 
+/* Popup */
 #popup {
   display: none;
   position: fixed;
@@ -67,24 +69,32 @@ button:hover { transform: scale(1.05); }
   margin-top: 30vh;
   font-size: 2.5rem;
 }
+
+/* 🐭 Big Slow Mouse */
+.mouse-animal {
+  position: fixed;
+  bottom: 10px;
+  left: -200px;
+  width: 140px;
+  animation: walkMouse 25s linear infinite;
+  z-index: 5;
+}
+
+@keyframes walkMouse {
+  0% { left: -200px; }
+  100% { left: 120%; }
+}
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 Background Music -->
-<iframe width="0" height="0"
-  src="https://www.youtube.com/embed/XsX3ATc3FbA?autoplay=1&loop=1&playlist=XsX3ATc3FbA"
-  frameborder="0"
-  allow="autoplay">
-</iframe>
-
 <div class="card">
   <h1>Happy Valentine’s Day ❤️</h1>
-  <h2>Diksha (My Chhota Don ) 💖</h2>
+  <h2>Diksha (My Chhota Don) 💖</h2>
 
   <p>
-    My Chhota Don❤️<br><br>
+    my Chhota Don❤️<br><br>
     Every moment with you feels special,<br>
     like the world slows down just for us 🌸<br><br>
     Your smile is my favorite place,<br>
@@ -103,7 +113,27 @@ button:hover { transform: scale(1.05); }
   <h1>I KNEW IT 😘❤️<br><br>FOREVER US 💞</h1>
 </div>
 
+<!-- 🐭 Cute Mouse -->
+<img src="https://media.tenor.com/9Jj0pGmH6Q0AAAAi/cute-mouse.gif" class="mouse-animal">
+
+<!-- 🎵 Background Music -->
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9c2d8a1d3d.mp3?filename=romantic-background-112191.mp3" type="audio/mp3">
+</audio>
+
 <script>
+const music = document.getElementById("bgMusic");
+
+function startMusic() {
+  music.volume = 0.6;
+  music.play().catch(() => {});
+  document.removeEventListener("click", startMusic);
+  document.removeEventListener("touchstart", startMusic);
+}
+
+document.addEventListener("click", startMusic);
+document.addEventListener("touchstart", startMusic);
+
 setInterval(() => {
   const heart = document.createElement('div');
   heart.className = 'heart';
